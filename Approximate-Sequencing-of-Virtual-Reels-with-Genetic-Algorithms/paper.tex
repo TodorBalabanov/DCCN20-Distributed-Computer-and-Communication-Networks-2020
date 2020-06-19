@@ -14,8 +14,7 @@
 
 \makeatletter
 \fancyhead[RO]{\small DCCN 2020\\ {14-18 September 2020}}
-\fancyhead[LO]{\small P.D. Petrov, G.B. Kostadinov, et al.\\
-Approximate Sequencing of Virtual Reels with GA}
+\fancyhead[LO]{\small P.D. Petrov, G.B. Kostadinov, et al. \\ Approximate Sequencing of Virtual Reels with GA}
 
 \c@page=1
        
@@ -54,6 +53,18 @@ Sequencing is a very popular mathematical problem in the field of genetics. DNA 
 
 \section{Introduction}
 
+Slot machines are gambling games organized as spinning reels with drawn symbols which stop on certain positions. In the beginning slot machines were mechanical with mechanical reels. Win of the player was appointed according to stop positions after reels spin. With the extensive evolvement of computers \cite{Angelova-2009}, integrated devices \cite{Dineva-Atanasova-2019} and computerized gambling games in the last three decades of the 20th century, mechanical slot machines were replaced with computerized. Mechanical reels were replaced with virtual reels stored inside the computer's memory. Mechanical spin was replaced with animated virtual spin. The most spread electronic slot machines have 5 reels and only 3 symbols are visible on the screen. Such configuration gives a screen grid of 3x5 visible symbols. In most of the games, taken from left to right, different cells in each reel are checked as lines and if consequent symbols of a particular kind are met the win is awarded. Even that reels are virtual symbols are pre-ordered, using combinatorial approaches \cite{Borissova-Mustakerov-2015}, by the mathematician who was responsible for the game design.
+
+In almost all cases the gambling games are mathematically unfair. It means that in long term players are losing against the game operator. The rate of this loss is measured with return to player (RTP) percentage. In many countries where gambling is legalized the RTP is between 90\% and 98\%. Of course, there are exceptions like Nevada where RTP can be much lower. The RTP has a statistical meaning. If the player bets 100 dollars on a game with 95\% RTP it means that statistically in a single run he/she will get back 95 dollars. The RTP of the game comes directly from the order of the symbols in the virtual reels. From a mathematical point of view, there is no reason the discrete distribution of the symbols on the reels to be unknown for the players. As it is very well known that gambling games are mathematically unfair and legal regulators are controlling strictly all gambling games, there will not be an advantage of the player if he/she knows what is the content of the virtual reels. The case is similar to the roulette where the order of the numbers and their colors are perfectly known to the players. However, slot machines are covered with additional mystery by the fact that virtual reels are not published in the game rules. If someone wants to estimate game's RTP without access to the original game source code there is no other way except reels sequences reconstruction from the observed chunks \cite{Vaidyanathan-Phoong-1995}. Such a sequence reconstruction task can be time-consuming because of its high-combinatorial nature \cite{Lewis-1998}.
+
+Generally, in most of the sequencing problems, the final goal is an exact reconstruction of the analyzed sequence \cite{Parsons-Johnson-1997}. In the case of the virtual slot machines reels \cite{Tomov-Zankinski-Balabanov-2017}, the exact reconstruction is not mandatory. It is enough reels to be reconstructed in such a manner that the subjective feeling of the player is identical for the original and the reconstructed reels. This research proposes approximate slot machine reels reconstruction with genetic algorithms. The optimality of the solutions provided by the genetic algorithm is estimated by Euclidean distance between the chunks of the candidate solution and the chunks from the original sequences. The final goal of this sequencing is reconstructed virtual reels with identical properties as the original even that there will not be an exact match between the reconstructed and the original sequences. 
+
+After the introductory part paper continues as follows: The second section describes the mechanism of genetic algorithm usage in sequencing problems. The third section presents the experiments done and the results achieved. The last section concludes and some directions of further works are appointed. 
+
+\section{Genetic Algorithms for Sequencing}
+
+\section{Experiments and Results}
+
 \section{Conclusion}
 
 \section*{Acknowledgments}
@@ -62,7 +73,19 @@ This research is funded by Velbazhd Software LLC and it is partially supported b
 
 \begin{thebibliography}{99}
 
-\bibitem{}
+\bibitem{Angelova-2009} Angelova, V.: Investigations in the Area of Soft Computing Targeted State of the Art Report, Cybernetics and Information Technologies, vol. 9, no. 1, 18-24, (2009).
+
+\bibitem{Dineva-Atanasova-2019} Dineva, K., Atanasova, T.: Methodology for Data Processing in Modular IoT System, Distributed Computer and Communication Networks, Proceedings of 22-st International Conference, Springer Nature Switzerland, vol. 11965, 457-468, (2019).
+
+\bibitem{Borissova-Mustakerov-2015} Borissova, D., Mustakerov, I.: Open job shop scheduling via enumerative combinatorics, International Journal of Mathematical Models and Methods in Applied Sciences, vol. 9, 120-127, (2015).
+
+\bibitem{Vaidyanathan-Phoong-1995} Vaidyanathan, P.P., Phoong, S.M.: Reconstruction of Sequences from Nonuniform Samples, Proceedings of International Symposium on Circuits and Systems, vol. 1, 601-604, (1995).
+
+\bibitem{Lewis-1998} Lewis, P.O.: A Genetic Algorithm for Maximum-Likelihood Phylogeny Inference Using Nucleotide Sequence Data, Molecular Biology and Evolution, vol. 15, no. 3, 277-283, (1998).
+
+\bibitem{Parsons-Johnson-1997} Parsons, R., Johnson, M.: A Case Study in Experimental Design Applied to Genetic Algorithms with Applications to DNA Sequence Assembly, American Journal of Mathematical and Management Sciences, vol. 17, no. 3-4, 369-396, (1997).
+
+\bibitem{Tomov-Zankinski-Balabanov-2017} Tomov, P., Zankinski, I., Balabanov, T.: Slot Machine Reels Reconstruction with Monte-Carlo Search, Proceedings of International Scientific Conference UniTech, vol. 2, 384-387, (2017).
 
 \end{thebibliography}
 
