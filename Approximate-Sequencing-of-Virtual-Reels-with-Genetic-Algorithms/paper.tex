@@ -69,13 +69,33 @@ Sequencing of slot machine virtual reels can be done with the exact reconstructi
 
 Chromosomes are encoded as candidate sequences formed from the set of the possible game symbols in the particular reel. From the candidate sequence, chunk samples are taken. The number of the samples taken is the same as the number taken from the original sequence. All estimations of the candidate solution quality are done according to these taken samples. 
 
-Estimation of the fitness value is done by calculation of average Euclidean distance for a sorted set of chunks in the candidate and the original as pairs. Sorting is done in order for candidate chunks to correspond to original chunks when Euclidean distance is calculated between the pairs. Original chunks are sorted only once when they are collected as samples. The candidate chunks are sorted each time when the candidate sequence is changed (crossover and/or mutation). All distances between chunk pairs are summed and divided by chunks number in order for the average value to be offered as chromosome fitness. 
+Estimation of the fitness value is done by calculation of average Euclidean distance for a sorted set of chunks in the candidate and the original as pairs. Sorting is done in order for candidate chunks to correspond to original chunks when Euclidean distance is calculated between the pairs. Original chunks are sorted only once when they are collected as samples. The candidate chunks are sorted each time when the candidate sequence is changed (crossover and/or mutation). All distances between chunk pairs are summed and divided by chunks number in order for the average value to be offered as chromosome fitness. Average Euclidean distance is taken with a negative sign because as far is the candidate solution from the original as low is the chromosome fitness. By acceptance of this fitness value estimation, it means that fitness value of the original distanced with itself will be zero which is the highest possible fitness value.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{fig01}
+\caption{Original sequences of five virtual reels}
+\label{fig:01}
+\end{figure}
 
 The fitness value estimation is done from the list of chunks, but crossover and mutation are done over candidate sequences. Such a change in the candidate sequences leads to an immediate recalculation of chunks samples. Modified uniform crossover is used with the application of normal distribution (mean 50\% and a standard deviation of 20\%) for the rate of participation of the two parents. It means that one of the parents has more influence in forming the offspring. Because the length of the original sequence is generally unknown the size of the offspring sequence length should be estimated during crossover process. As a lower bound of candidate sequence length, the number of unique symbols in the virtual reels is taken. As an upper bound of candidate sequence length, the total length of all chunks taken together is taken. Such estimation of the candidate sequence length gives chance all symbols to participate (lower bound) and all chunks to be used in a single sequence (upper bound). Such an estimation of the length gives chance to the genetic algorithm to optimize this parameter too. Almost in all cases, parents are at different lengths. The offspring differs in length from parents too. When the offspring is longer than the parents, values are taken in a loop from the beginning. It is the natural way to produce longer offspring because virtual reels are used in looping during real-time game operation. The mutation is done by random replacement of a single value in the candidate sequence. The random value is taken from the chunks of the original sequence. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{fig02}
+\caption{Reconstructed sequences of five virtual reels}
+\label{fig:02}
+\end{figure}
 
 For the selection, three different chromosomes are selected randomly. Two of the three with better fitness are selected for parents. The third one is selected to be removed from the population and the newly generated offspring to take its place. This replacement is done only if the new offspring is better than the old one. With such a selection operator, the elitism rule is indirectly applied.
 
 \section{Experiments and Results}
+
+All experiments are done with a custom-created software project published in GitHub \cite{Balabanov-2020}. The source code is written in Java 8 as programming language. An empirical population of 137 individuals is chosen. The mutation rate is chosen to be 0.05\% as a recommended value in the literature. Modified competitive selection is implemented where the crossover rate is almost 100\%. Uniform crossover with a normally distributed participation threshold is chosen (mean of 50\% and standard deviation of 20\%). If the offspring is better than the worst of three individuals it takes its place and elitism rule is applied indirectly. 
+
+A set of 8 different virtual reels is used as input data of original sequences. Visual representation of one of them is presented in Fig. \ref{fig:01}. Each of the five virtual reels is reconstructed separately. The result of the reconstructed reels is shown in Fig. \ref{fig:02}. The genetic algorithm is stated for 100 generations. It is clearly visible that reconstructed sequences are pretty different in length than the original once. Fitness values for the five reconstructed reels are as follows: -3.521716216163723, -4.310895779885775, -2.3809034389618526, -3.8553857718048152, -3.6797186696978517.
+
+In current experiments, only a single run of genetic algorithm is done, but many consecutive runs (simulated annealing as an analogy) will improve the achieved optimality because genetic algorithms can be stuck in local optimums.
 
 \section{Conclusion}
 
